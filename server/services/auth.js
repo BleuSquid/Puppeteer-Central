@@ -52,7 +52,7 @@ function login(req, res) {
 }
 
 function authenticate(req, res, next) {
-	if (req.path.startsWith('/public')) {
+	if (req.path.startsWith('/public') || req.path.startsWith('/i/')) {
 		next()
 		return
 	}
