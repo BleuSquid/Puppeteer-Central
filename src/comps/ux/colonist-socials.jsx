@@ -3,7 +3,7 @@ import { Popup } from 'semantic-ui-react'
 import { useStateLink } from '@hookstate/core'
 import socials from '../../services/cmd_socials'
 
-export default function ColonistThoughts() {
+export default function ColonistSocials() {
 	const socialsLink = useStateLink(socials.ref)
 
 	const grid = {

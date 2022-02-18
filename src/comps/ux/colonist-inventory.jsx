@@ -4,7 +4,7 @@ import { Button } from 'semantic-ui-react'
 import inventory from '../../services/cmd_inventory'
 import commands from '../../commands'
 
-export default function ColonistThoughts() {
+export default function ColonistInventory() {
 	const inventoryLink = useStateLink(inventory.ref)
 
 	const grid = {

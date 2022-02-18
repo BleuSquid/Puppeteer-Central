@@ -6,7 +6,7 @@ import commands from '../../commands'
 import game from '../../services/cmd_game-info'
 import { Button } from 'semantic-ui-react'
 
-export default function ColonisSchedules() {
+export default function ColonistSchedules() {
 	const gameLink = useStateLink(game.ref)
 	const stateLink = useStateLink(state.ref)
 	const [scheduleType, setScheduleType] = useState('A')
