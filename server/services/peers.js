@@ -72,6 +72,7 @@ const publicUser = (u) => ({
 	name: u.name,
 	service: u.service,
 	picture: u.picture,
+	accessToken: u.accessToken,
 })
 const publicClient = (c) => ({
 	info: publicInfo(c),
@@ -309,11 +310,11 @@ function availability(client, viewer, state) {
 	}
 }
 
-async function availableStreamers() {
+async function availableStreamers(user) {
 	try {
 		let streamers = clients.filter(serverAvailable).map((c) => publicClient(c))
 		var ids = streamers.map((streamer) => streamer.user.id)
-		var infos = await twitch.streamInfo(ids)
+		var infos = await twitch.streamInfo(ids, user)
 		streamers.forEach((streamer) => {
 			streamer.stream = infos.find((info) => info.id == streamer.user.id).info
 		})
@@ -327,7 +328,7 @@ async function availableStreamers() {
 async function streamerChange(client) {
 	try {
 		let streamer = publicClient(client)
-		var infos = await twitch.streamInfo([streamer.user.id])
+		var infos = await twitch.streamInfo([streamer.user.id], client.user)
 		streamer.stream = infos[0].info
 		const json = { type: 'streamer', streamer }
 		clients.forEach((c) => safeClientSend(c, json, true))
