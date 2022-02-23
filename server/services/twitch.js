@@ -30,6 +30,7 @@ async function verifyToken(token) {
 	const url = 'https://api.twitch.tv/helix/users'
 	const response = await fetch(url, {
 		headers: new fetch.Headers({
+			'Client-ID': process.env.TWITCH_CLIENT_ID,
 			Authorization: `Bearer ${token}`,
 		}),
 	})
