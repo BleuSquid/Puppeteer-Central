@@ -27,7 +27,7 @@ async function streamInfo(streamIds, user) {
 }
 
 async function verifyToken(token) {
-	const url = 'https://api.twitch.tv/helix/users'
+	const url = 'https://id.twitch.tv/oauth2/validate'
 	const response = await fetch(url, {
 		headers: new fetch.Headers({
 			'Client-ID': process.env.TWITCH_CLIENT_ID,
@@ -35,7 +35,7 @@ async function verifyToken(token) {
 		}),
 	})
 	const result = await response.json()
-	return result.exp > 0 && result.exp < new Date().getTime() / 1000
+	return result.expires_in > 0 && result.expires_in < new Date().getTime() / 1000
 }
 
 const strategy = new TwitchStrategy(
