@@ -3,7 +3,7 @@ const TwitchStrategy = require('@d-fischer/passport-twitch').Strategy
 
 async function streamInfo(streamIds, user) {
 	const fetcher = async (streamId) => {
-		const urlStreamData = `https://api.twitch.tv/helix/streams?id=${streamId}`
+		const urlStreamData = `https://api.twitch.tv/helix/streams?user_id=${streamId}`
 
 		const response = await fetch(urlStreamData, {
 			headers: new fetch.Headers({
