@@ -4,6 +4,8 @@ const TwitchStrategy = require('@d-fischer/passport-twitch').Strategy
 async function streamInfo(streamIds, user) {
 	const fetcher = async (streamId) => {
 		const urlStreamData = `https://api.twitch.tv/helix/streams?user_id=${streamId}`
+		// Always verify our token first. It can be rejected at any time
+		user.accessToken && await verifyToken(user.accessToken)
 
 		const response = await fetch(urlStreamData, {
 			headers: new fetch.Headers({
@@ -27,6 +29,7 @@ async function streamInfo(streamIds, user) {
 }
 
 async function verifyToken(token) {
+	// TODO: automatically logout user from puppet if token is revoked.
 	const url = 'https://id.twitch.tv/oauth2/validate'
 	const response = await fetch(url, {
 		headers: new fetch.Headers({
@@ -35,7 +38,7 @@ async function verifyToken(token) {
 		}),
 	})
 	const result = await response.json()
-	return result.expires_in > 0 && result.expires_in < new Date().getTime() / 1000
+	return result.expires_in > 0
 }
 
 const strategy = new TwitchStrategy(
@@ -46,14 +49,18 @@ const strategy = new TwitchStrategy(
 		scope: '',
 	},
 	async (accessToken, _refreshToken, profile, cb) => {
-		await verifyToken(accessToken)
-		cb(undefined, {
-			id: profile.id,
-			name: profile.login,
-			picture: profile.profile_image_url,
-			service: 'twitch',
-			accessToken: accessToken,
-		})
+		if (await verifyToken(accessToken)) {
+			cb(undefined, {
+				id: profile.id,
+				name: profile.login,
+				picture: profile.profile_image_url,
+				service: 'twitch',
+				accessToken: accessToken,
+			})
+		} else {
+			// token is expired or invalid
+			cb(undefined, false)
+		}
 	}
 )
 
