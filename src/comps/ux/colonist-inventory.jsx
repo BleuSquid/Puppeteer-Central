@@ -3,6 +3,7 @@ import { useStateLink } from '@hookstate/core'
 import { Button } from 'semantic-ui-react'
 import inventory from '../../services/cmd_inventory'
 import commands from '../../commands'
+import colors from '../../colors'
 
 export default function ColonistInventory() {
 	const inventoryLink = useStateLink(inventory.ref)
@@ -40,9 +41,11 @@ export default function ColonistInventory() {
 						<div>
 							<img src={item.previewURL} style={preview} />
 						</div>
-						<div>
-							{item.name}
-						</div>
+						<div
+							dangerouslySetInnerHTML={{
+								__html: colors.colorSpan(item.name),
+							}}
+						/>
 						<div style={{ textAlign: 'right' }}>
 							{item.mass}kg
 						</div>
@@ -60,9 +63,11 @@ export default function ColonistInventory() {
 						<div>
 							<img src={item.previewURL} style={preview} />
 						</div>
-						<div>
-							{item.name}
-						</div>
+						<div
+							dangerouslySetInnerHTML={{
+								__html: colors.colorSpan(item.name),
+							}}
+						/>
 						<div style={{ textAlign: 'right' }}>
 							{item.mass}kg
 						</div>

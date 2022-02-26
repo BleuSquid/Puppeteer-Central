@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import jobs from '../../services/cmd_jobs'
 import { Dropdown } from 'semantic-ui-react'
+import colors from '../../colors'
 
 export default function ActiveMenu(props) {
 	const [loading, setLoading] = useState(false)
@@ -10,7 +11,14 @@ export default function ActiveMenu(props) {
 	const load = () => {
 		setLoading(true)
 		jobs.sendJob(props.optionsCommand, props.optionsArgs, (res) => {
-			let opts = res.results?.map((result) => ({ key: result.id, text: result.name, value: result.id, active: result.selected })) ?? []
+			let opts = res.results?.map((result) => (
+				{
+					key: result.id,
+					text: <div dangerouslySetInnerHTML={{	__html: colors.colorSpan(result.name), }} />,
+					value: result.id,
+					active: result.selected
+				}
+			)) ?? []
 			const idx = opts.findIndex((o) => o.active)
 			if (idx == -1) opts = [{ key: -1, className: 'hidden-menu', value: -1 }, ...opts]
 			else setValue(opts[idx].value)

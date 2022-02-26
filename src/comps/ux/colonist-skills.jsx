@@ -3,6 +3,7 @@ import { Segment, Popup } from 'semantic-ui-react'
 import { useStateLink } from '@hookstate/core'
 import { skillBar } from '../ux/bars'
 import colonist from '../../services/cmd_colonist'
+import colors from '../../colors'
 
 export default function ColonistSkills() {
 	const colonistLink = useStateLink(colonist.ref)
@@ -26,9 +27,10 @@ export default function ColonistSkills() {
 
 	const tag = (t, i) => {
 		if (!t.name) return <span>—</span>
+		const coloredTag = colors.hexColorToElems(t.name)
 		return (
-			<span key={i} style={{ whiteSpace: 'nowrap', padding: '2px 6px 2px 6px', marginRight: 4, backgroundColor: '#ddd' }}>
-				{t.name}{' '}
+			<span key={i} style={{ color: coloredTag.color, whiteSpace: 'nowrap', padding: '2px 6px 2px 6px', marginRight: 4, backgroundColor: '#ddd' }}>
+				{coloredTag.text}{' '}
 				<Popup
 					offset={-8}
 					content={
