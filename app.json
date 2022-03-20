@@ -1,6 +1,6 @@
 {
 	"name": "Puppeteer Central",
 	"description": "The switchboard for messages from the Rimworld Puppeteer mod",
-	"repository": "https://github.com/pardeike/Puppeteer-Central",
+	"repository": "https://github.com/BleuSquid/Puppeteer-Central",
 	"image": "heroku/nodejs"
 }
