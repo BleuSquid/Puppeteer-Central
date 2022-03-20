@@ -1,4 +1,4 @@
-import React, { useEffect, createRef } from 'react'
+import { Fragment, useEffect, createRef } from 'react'
 import { Popup, Segment, Dropdown } from 'semantic-ui-react'
 import { percentageBar, colorBar } from './bars'
 import { useStateLink } from '@hookstate/core'
@@ -113,7 +113,7 @@ export default function ColonistOverview() {
 	if (!colonistLink.value.name) return <NoAssignment />
 
 	return (
-		<Segment.Group>
+        <Segment.Group>
 			<Segment>
 				<div style={nGrid('auto minmax(120px, 170px) 64px')}>
 					<div style={{ display: 'flex', flexWrap: 'wrap' }}>
@@ -155,7 +155,7 @@ export default function ColonistOverview() {
 					)}
 				</div>
 				{isAvailableLink.value ? (
-					<React.Fragment>
+					<Fragment>
 						<div style={{ ...nGrid('repeat(4, auto)'), paddingTop: '10px' }}>
 							{percentageBar(colonistLink.value.health, 'health')}
 							{percentageBar(colonistLink.value.mood, 'mood', 0.4)}
@@ -179,9 +179,9 @@ export default function ColonistOverview() {
 								)}
 							</div>
 						) : undefined}
-					</React.Fragment>
+					</Fragment>
 				) : undefined}
 			</Segment>
 		</Segment.Group>
-	)
+    );
 }

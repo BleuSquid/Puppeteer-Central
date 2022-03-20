@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { useStateLink } from '@hookstate/core'
 import state from '../../services/cmd_state'
 import colors from '../../colors'
@@ -169,7 +169,7 @@ export default function ColonistSchedules() {
 	}
 
 	return (
-		<React.Fragment>
+        <Fragment>
 			<div style={grid1}>
 				<div></div>
 				<div></div>
@@ -179,13 +179,13 @@ export default function ColonistSchedules() {
 					</div>
 				))}
 				{prios.rows.map((row, ri) => (
-					<React.Fragment key={ri}>
+					<Fragment key={ri}>
 						<div className={row.yours ? 'bolder' : undefined} style={labelStyle}>
 							{row.pawn}
 						</div>
 						<div></div>
 						{row.val.map((val, i) => prioBox(val, ri, i, row))}
-					</React.Fragment>
+					</Fragment>
 				))}
 			</div>
 			<div style={grid2}>
@@ -197,13 +197,13 @@ export default function ColonistSchedules() {
 					</div>
 				))}
 				{sched.rows.map((row, ri) => (
-					<React.Fragment key={ri}>
+					<Fragment key={ri}>
 						<div className={row.yours ? 'bolder' : undefined} style={labelStyle}>
 							{row.pawn}
 						</div>
 						<div></div>
 						{row.val.split('').map((c, i) => schedBox(c, ri, i, row))}
-					</React.Fragment>
+					</Fragment>
 				))}
 			</div>
 			<div style={{ textAlign: 'center' }}>
@@ -220,6 +220,6 @@ export default function ColonistSchedules() {
 					})}
 				</Button.Group>
 			</div>
-		</React.Fragment>
-	)
+		</Fragment>
+    );
 }

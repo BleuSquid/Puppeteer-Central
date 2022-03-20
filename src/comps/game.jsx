@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { Segment, Tab, Menu } from 'semantic-ui-react'
 import { Spacer } from '../comps/tools'
 import { useStateLink } from '@hookstate/core'
@@ -51,10 +51,10 @@ export default function Game() {
 		menu(
 			'injury',
 			colonistFlagsLink.value.injuries || colonistFlagsLink.value.capacities,
-			<React.Fragment>
+			<Fragment>
 				<ColonistInjuries />
 				<ColonistCapacities />
-			</React.Fragment>
+			</Fragment>
 		),
 		menu('mood', true, <ColonistMood />),
 		menu('mind', colonistFlagsLink.value.thoughts, <ColonistThoughts />),
@@ -71,21 +71,21 @@ export default function Game() {
 	}
 
 	return (
-		<React.Fragment>
+        <Fragment>
 			<GameHeader streamer={streamer} />
 			{streamer && (
-				<React.Fragment>
+				<Fragment>
 					<ColonistOverview />
 					{colonistLink.value.name && ((colonistFlagsLink.value.assigned && isAvailableLink.value) || toolkit) && (
-						<React.Fragment>
+						<Fragment>
 							<Segment.Group>
 								<Segment>{colonistFlagsLink.value.assigned && isAvailableLink.value ? <Tab panes={panes} /> : toolkit}</Segment>
 							</Segment.Group>
 							<Spacer />
-						</React.Fragment>
+						</Fragment>
 					)}
-				</React.Fragment>
+				</Fragment>
 			)}
-		</React.Fragment>
-	)
+		</Fragment>
+    );
 }

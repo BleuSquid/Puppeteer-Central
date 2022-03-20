@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import { Table, Input } from 'semantic-ui-react'
 
 export default function SearchableHeader(props) {

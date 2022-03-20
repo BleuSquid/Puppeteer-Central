@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { useStateLink } from '@hookstate/core'
 import { moodBar } from '../ux/bars'
 import colonist from '../../services/cmd_colonist'
@@ -16,13 +16,13 @@ export default function ColonistMood() {
 	}
 
 	return (
-		<div style={grid}>
+        <div style={grid}>
 			{colonistLink.value.needs.map((need) => (
-				<React.Fragment key={need.name}>
+				<Fragment key={need.name}>
 					<div style={{ whiteSpace: 'nowrap' }}>{need.name}</div>
 					{moodBar(need)}
-				</React.Fragment>
+				</Fragment>
 			))}
 		</div>
-	)
+    );
 }

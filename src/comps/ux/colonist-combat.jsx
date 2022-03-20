@@ -1,4 +1,4 @@
-import React, { useEffect, createRef, useState } from 'react'
+import { Fragment, useEffect, createRef, useState } from 'react'
 import { Form, Menu, Popup } from 'semantic-ui-react'
 import { createStateLink, useStateLink } from '@hookstate/core'
 import commands from '../../commands'
@@ -272,7 +272,7 @@ export default function ColonistCombat() {
 	const gizmoSize = 50
 
 	return (
-		<React.Fragment>
+        <Fragment>
 			<div style={topGrid}>
 				{isMobileFormFactorLink.access().get() && (
 					<img
@@ -334,6 +334,6 @@ export default function ColonistCombat() {
 					)
 				})}
 			</div>
-		</React.Fragment>
-	)
+		</Fragment>
+    );
 }

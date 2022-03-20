@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { useStateLink } from '@hookstate/core'
 import { Button } from 'semantic-ui-react'
 import inventory from '../../services/cmd_inventory'
@@ -33,11 +33,11 @@ export default function ColonistInventory() {
 	}
 
 	return (
-		<React.Fragment>
+        <Fragment>
 			<div style={{ paddingTop: 20 }}><b>Equipment</b></div>
 			<div style={grid}>
 				{inventoryLink.value.equipment.map((item, i) => (
-					<React.Fragment key={i}>
+					<Fragment key={i}>
 						<div>
 							<img src={item.previewURL} style={preview} />
 						</div>
@@ -53,13 +53,13 @@ export default function ColonistInventory() {
 							&nbsp;
 							<Button style={{ padding: 4 }} as="span" icon onClick={drop(item.id)}><img src="/i/drop.png" /></Button>
 						</div>
-					</React.Fragment>
+					</Fragment>
 				))}
 			</div>
 			<div><b>Inventory</b></div>
 			<div style={grid}>
 				{inventoryLink.value.inventory.map((item, i) => (
-					<React.Fragment key={i}>
+					<Fragment key={i}>
 						<div>
 							<img src={item.previewURL} style={preview} />
 						</div>
@@ -76,9 +76,9 @@ export default function ColonistInventory() {
 							{item.consumable ? <Button style={{ padding: 4 }} as="span" icon onClick={consume(item.id)}><img src="/i/consume.png" /></Button> : undefined}
 							<Button style={{ padding: 4 }} as="span" icon onClick={drop(item.id)}><img src="/i/drop.png" /></Button>
 						</div>
-					</React.Fragment>
+					</Fragment>
 				))}
 			</div>
-		</React.Fragment>
-	)
+		</Fragment>
+    );
 }

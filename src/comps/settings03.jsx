@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { Fragment, useState } from 'react'
 import useIsMounted from '@rodw95/use-mounted-state'
 import { Card, Form, TextArea, Button, Checkbox, Message } from 'semantic-ui-react'
 import { useStateLink } from '@hookstate/core'
@@ -28,7 +28,7 @@ export default function Settings03(props) {
 
 	const [success, setSuccess] = useState(false)
 
-	if (props.mode != 'streamer' || !info.value) return <React.Fragment></React.Fragment>
+	if (props.mode != 'streamer' || !info.value) return <Fragment></Fragment>;
 
 	return (
 		<Card fluid>

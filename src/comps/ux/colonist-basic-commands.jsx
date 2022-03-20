@@ -1,4 +1,3 @@
-import React from 'react'
 import { valueSelector } from './value-selector'
 import { useStateLink } from '@hookstate/core'
 import colonist from '../../services/cmd_colonist'

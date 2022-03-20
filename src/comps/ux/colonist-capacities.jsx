@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { useStateLink } from '@hookstate/core'
 import colonist from '../../services/cmd_colonist'
 import colors from '../../colors'
@@ -16,13 +16,13 @@ export default function ColonistCapacities() {
 	}
 
 	return (
-		<div style={grid}>
+        <div style={grid}>
 			{colonistLink.value.capacities.map((capacity) => (
-				<React.Fragment key={capacity.name}>
+				<Fragment key={capacity.name}>
 					<div>{capacity.name}</div>
 					<b style={{ textAlign: 'right', color: colors.rgb(capacity.rgb) }}>{capacity.value}</b>
-				</React.Fragment>
+				</Fragment>
 			))}
 		</div>
-	)
+    );
 }

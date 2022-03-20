@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import jobs from '../../services/cmd_jobs'
 import { Dropdown } from 'semantic-ui-react'
 import colors from '../../colors'

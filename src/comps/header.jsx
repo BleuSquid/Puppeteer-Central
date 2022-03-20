@@ -1,4 +1,3 @@
-import React from 'react'
 import { useStateLink } from '@hookstate/core'
 import routesRef from '../hooks/routes'
 import settings from '../services/cmd_settings'

@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { Segment, Popup } from 'semantic-ui-react'
 import { useStateLink } from '@hookstate/core'
 import { skillBar } from '../ux/bars'
@@ -52,7 +52,7 @@ export default function ColonistSkills() {
 	const history = { __html: colonistLink.value.inspect[0] }
 
 	return (
-		<Segment.Group>
+        <Segment.Group>
 			<Segment raised style={header}>
 				<div>
 					<b style={row} dangerouslySetInnerHTML={history}></b>
@@ -73,14 +73,14 @@ export default function ColonistSkills() {
 			<Segment raised>
 				<div style={grid}>
 					{colonistLink.value.skills?.map((skill, i) => (
-						<React.Fragment key={i}>
+						<Fragment key={i}>
 							<div style={{ whiteSpace: 'nowrap' }}>{skill.name}</div>
 							{skill.passion ? <img src={`/i/passion${skill.passion}.png`} /> : <div />}
 							{skillBar(skill)}
-						</React.Fragment>
+						</Fragment>
 					))}
 				</div>
 			</Segment>
 		</Segment.Group>
-	)
+    );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { useStateLink } from '@hookstate/core'
 import { Button } from 'semantic-ui-react'
 import { Slider } from 'react-semantic-ui-range'
@@ -33,7 +33,7 @@ export default function CustomizeColonist() {
 	const gameLink = useStateLink(game.ref)
 
 	const genderPart = (
-		<React.Fragment>
+		<Fragment>
 			<div style={{ whiteSpace: 'nowrap', marginTop: 'auto', marginBottom: 'auto' }}>Gender</div>
 			<div>
 				<Button
@@ -60,11 +60,11 @@ export default function CustomizeColonist() {
 					Female
 				</Button>
 			</div>
-		</React.Fragment>
+		</Fragment>
 	)
 
 	const bodyTypePart = (
-		<React.Fragment>
+		<Fragment>
 			<div style={{ whiteSpace: 'nowrap', marginTop: 'auto', marginBottom: 'auto' }}>Body Style</div>
 			<Stepper
 				value={gameLink.value.style.bodyType}
@@ -74,11 +74,11 @@ export default function CustomizeColonist() {
 					commands.customize('bodyType', val)
 				}}
 			/>
-		</React.Fragment>
+		</Fragment>
 	)
 
 	const hairStylePart = (
-		<React.Fragment>
+		<Fragment>
 			<div style={{ whiteSpace: 'nowrap', marginTop: 'auto', marginBottom: 'auto' }}>Hair Style</div>
 			<Stepper
 				value={gameLink.value.style.hairStyle}
@@ -88,11 +88,11 @@ export default function CustomizeColonist() {
 					commands.customize('hairStyle', val)
 				}}
 			/>
-		</React.Fragment>
+		</Fragment>
 	)
 
 	const melaninPart = (
-		<React.Fragment>
+		<Fragment>
 			<div style={{ whiteSpace: 'nowrap', marginTop: 'auto', marginBottom: 'auto' }}>Melanin</div>
 			<div style={innerGrid}>
 				<Slider
@@ -108,11 +108,11 @@ export default function CustomizeColonist() {
 				/>
 				<div style={valueCol}>{gameLink.value.style.melanin}%</div>
 			</div>
-		</React.Fragment>
+		</Fragment>
 	)
 
 	const hairColorPart = (
-		<React.Fragment>
+		<Fragment>
 			<div style={{ whiteSpace: 'nowrap' }}>Hair Color</div>
 			<div style={innerGrid}>
 				<Slider
@@ -155,7 +155,7 @@ export default function CustomizeColonist() {
 				/>
 				<div style={valueCol}>{gameLink.value.style.hairColor[2]}%</div>
 			</div>
-		</React.Fragment>
+		</Fragment>
 	)
 
 	return (

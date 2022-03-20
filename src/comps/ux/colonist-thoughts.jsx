@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { useStateLink } from '@hookstate/core'
 import colonist from '../../services/cmd_colonist'
 
@@ -21,16 +21,16 @@ export default function ColonistThoughts() {
 	}
 
 	return (
-		<div style={grid}>
+        <div style={grid}>
 			{colonistLink.value.thoughts.map((thought) => (
-				<React.Fragment key={thought.name}>
+				<Fragment key={thought.name}>
 					<div>
 						{thought.name}
 						{expires(thought.min, thought.max)}
 					</div>
 					<b style={{ textAlign: 'right', color: thought.value > 0 ? 'green' : 'red' }}>{thought.value}</b>
-				</React.Fragment>
+				</Fragment>
 			))}
 		</div>
-	)
+    );
 }

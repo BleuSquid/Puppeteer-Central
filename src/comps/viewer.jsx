@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createRef } from 'react'
+import { Fragment, useState, useEffect, createRef } from 'react'
 import { Search, Image } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import { createStateLink, useStateLink } from '@hookstate/core'
@@ -91,16 +91,16 @@ export default function Viewer(props) {
 	}
 
 	return (
-		<React.Fragment>
+        <Fragment>
 			<img src="/i/pencil.png" style={{ float: 'right', cursor: 'pointer' }} onClick={() => setSearch('')} />
 			{props.viewer ? (
-				<React.Fragment>
+				<Fragment>
 					<img src="/i/delete.png" style={{ float: 'right', cursor: 'pointer', paddingRight: '12px' }} onClick={() => props.remove()} />
 					<Image src={props.viewer.picture} avatar style={avatarStyle(18)} /> {props.viewer.name}
-				</React.Fragment>
+				</Fragment>
 			) : (
 				''
 			)}
-		</React.Fragment>
-	)
+		</Fragment>
+    );
 }

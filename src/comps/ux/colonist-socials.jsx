@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { Popup } from 'semantic-ui-react'
 import { useStateLink } from '@hookstate/core'
 import socials from '../../services/cmd_socials'
@@ -47,10 +47,10 @@ export default function ColonistSocials() {
 	}
 
 	return (
-		<React.Fragment>
+        <Fragment>
 			<div style={grid}>
 				{socialsLink.nested.relations.value.map((relation, i) => (
-					<React.Fragment key={i}>
+					<Fragment key={i}>
 						<img src={relation.portraitURL} style={colonistImage} />
 						<div>{relation.type.replace('Acquaintance', 'Fellow')}</div>
 						<div>{relation.pawn}</div>
@@ -62,11 +62,11 @@ export default function ColonistSocials() {
 							trigger={<span>{relation.theirOpinion != '0' ? relation.theirOpinion : ''}</span>}
 						/>}</div>
 						<div style={{ textAlign: 'right' }}>{relation.situation}</div>
-					</React.Fragment>
+					</Fragment>
 				))}
 			</div>
 			<div className={'ui divider'}	></div>
 			<div><b>Last interaction: </b>{socialsLink.nested.lastInteraction.value}</div>
-		</React.Fragment>
-	)
+		</Fragment>
+    );
 }

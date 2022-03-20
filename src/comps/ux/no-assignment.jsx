@@ -1,4 +1,3 @@
-import React from 'react'
 import Chat from './chat'
 import { Dimmer, Placeholder, Segment, Loader } from 'semantic-ui-react'
 import { useStateLink } from '@hookstate/core'

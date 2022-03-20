@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { useStateLink } from '@hookstate/core'
 import { Form, Input, Message, Search } from 'semantic-ui-react'
 import chat from '../../services/cmd_chat'
@@ -45,7 +45,7 @@ export default function Chat() {
 	}
 
 	return (
-		<React.Fragment>
+        <Fragment>
 			<Form onSubmit={handleSendChat}>
 				<Search
 					action="Send"
@@ -82,6 +82,6 @@ export default function Chat() {
 						<span style={{ userSelect: 'text' }}>{msg.result.replace(/^\w/, (c) => c.toUpperCase())}</span>
 					</Message>
 				))}
-		</React.Fragment>
-	)
+		</Fragment>
+    );
 }

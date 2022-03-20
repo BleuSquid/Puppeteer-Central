@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button } from 'semantic-ui-react'
 import { useMediaQuery } from 'react-responsive'
 import { useStateLink } from '@hookstate/core'
