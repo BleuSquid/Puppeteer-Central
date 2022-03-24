@@ -30,6 +30,7 @@ const strategy = new YoutubeV3Strategy(
 			name: identity.name,
 			picture: identity.picture,
 			service: 'youtube',
+			accessToken: accessToken,
 		})
 	}
 )

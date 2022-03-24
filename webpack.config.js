@@ -34,13 +34,18 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: [
-							'@babel/preset-env',
-							'@babel/react',
-							{
-								plugins: ['@babel/plugin-proposal-class-properties']
-							}
-						]
+						"presets": [
+							["@babel/preset-react", { "runtime": "automatic" }],
+							["@babel/preset-env"]
+						],
+						"plugins": [
+							'@babel/plugin-proposal-class-properties'
+						],
+						"assumptions": {
+							"iterableIsArray": true,
+							"noDocumentAll": true,
+							"setPublicClassFields": true
+						}
 					}
 				}
 			}

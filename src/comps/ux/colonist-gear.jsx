@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button } from 'semantic-ui-react'
 import { useMediaQuery } from 'react-responsive'
 import { useStateLink } from '@hookstate/core'
@@ -6,7 +5,7 @@ import { Popup } from 'semantic-ui-react'
 import gear from '../../services/cmd_gear'
 import commands from '../../commands'
 
-export default function ColonistThoughts() {
+export default function ColonistGear() {
 	const gearLink = useStateLink(gear.ref)
 	const shortWidth = useMediaQuery({ query: '(max-width: 440px)' })
 	const mediumWidth = useMediaQuery({ query: '(max-width: 620px)' })

@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { Header, Button, Label, Image, Loader, Icon } from 'semantic-ui-react'
 import { useStateLink } from '@hookstate/core'
 import commands from '../../commands'
@@ -37,7 +37,7 @@ export default function GameHeader(props) {
 	}
 
 	return (
-		<React.Fragment>
+        <Fragment>
 			<Header style={{ color: 'white', fontWeight: '700 !important' }}>
 				<Button
 					onClick={() => commands.leaveGame(true)}
@@ -56,6 +56,6 @@ export default function GameHeader(props) {
 					{earnLink.value >= 0 ? <b style={coinTextStyle}>{earnLink.value}</b> : <Loader active inline size="mini" style={coinSpinnerStyle} />}
 				</Label>
 			)}
-		</React.Fragment>
-	)
+		</Fragment>
+    );
 }

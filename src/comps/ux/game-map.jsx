@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { Fragment, useEffect } from 'react'
 import { useStateLink } from '@hookstate/core'
 import grid from '../../services/cmd_grid'
 
@@ -115,7 +115,7 @@ export default function GameMap(props) {
 	})
 
 	return (
-		<React.Fragment>
+        <Fragment>
 			{props.mapURL && (
 				<img ref={props.mapRef} draggable={false} src={props.mapURL} style={{ userSelect: 'none', cursor: 'pointer', width: '100%', height: '100%' }} />
 			)}
@@ -132,6 +132,6 @@ export default function GameMap(props) {
 			)}
 			{newPosition && newPosition != position && <div style={circle(newPosition, newMarkerSize, 0.2)} />}
 			{selectionCorners}
-		</React.Fragment>
-	)
+		</Fragment>
+    );
 }

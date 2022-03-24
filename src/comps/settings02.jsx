@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { Card, Label } from 'semantic-ui-react'
 import { useStateLink } from '@hookstate/core'
 import status from '../services/cmd_status'
@@ -17,22 +17,22 @@ export default function Settings02() {
 
 	function Connected(props) {
 		return (
-			<React.Fragment>
+            <Fragment>
 				<span style={{}}>{props.label}</span>
 				<span style={{ justifySelf: 'end' }}>
 					<Label color={props.status ? 'green' : 'red'}>{props.status ? 'Connected' : 'Disconnected'}</Label>
 				</span>
-			</React.Fragment>
-		)
+			</Fragment>
+        );
 	}
 
 	function Value(props) {
 		return (
-			<React.Fragment>
+            <Fragment>
 				<span style={{}}>{props.label}</span>
 				<span style={{ justifySelf: 'end' }}>{props.value}</span>
-			</React.Fragment>
-		)
+			</Fragment>
+        );
 	}
 
 	function Connections() {

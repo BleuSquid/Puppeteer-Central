@@ -1,24 +1,48 @@
 const passport = require('passport')
-const twitch = require('./twitch')
-const youtube = require('./youtube')
 const token = require('./token')
 
 // https://developers.google.com/identity/protocols/oauth2/web-server
 
 function register(app) {
-	passport.use(twitch.strategy)
+	// Check env for defined authentication methods before attempting to register them
+	use_twitch_auth = false;
+	use_youtube_auth = false;
+	if (
+		typeof process.env.YOUTUBE_OAUTH_TEST_APP_CLIENT_ID !== 'undefined'
+		&& typeof process.env.YOUTUBE_OAUTH_TEST_APP_CLIENT_SECRET !== 'undefined'
+		&& process.env.YOUTUBE_CALLBACK !== 'undefined'
+	) use_youtube_auth = true;
+
+	if (
+		typeof process.env.TWITCH_CLIENT_ID !== 'undefined'
+		&& typeof process.env.TWITCH_CLIENT_SECRET !== 'undefined'
+		&& typeof process.env.TWITCH_CALLBACK !== 'undefined'
+	) use_twitch_auth = true;
+
+	if (use_youtube_auth) {
+		youtube = require('./youtube');
 	passport.use(youtube.strategy)
+	}
+
+	if (use_twitch_auth) {
+		twitch = require('./twitch')
+		passport.use(twitch.strategy)
+	}
+
 	passport.serializeUser((data, cb) => cb(undefined, data))
 	passport.deserializeUser((data, cb) => cb(undefined, data))
 	app.use(passport.initialize())
-	app.get(
-		'/auth/youtube',
-		passport.authenticate('youtube', {
-			scope: ['email', 'openid', 'profile', 'https://www.googleapis.com/auth/youtube.readonly'],
-		}),
-		login
-	)
-	app.get('/auth/twitch', passport.authenticate('twitch', { scope: [''] }), login)
+
+	use_youtube_auth &&
+		app.get(
+			'/auth/youtube',
+			passport.authenticate('youtube', {
+				scope: ['email', 'openid', 'profile', 'https://www.googleapis.com/auth/youtube.readonly'],
+			}),
+			login
+		)
+
+	use_twitch_auth && app.get('/auth/twitch', passport.authenticate('twitch', { scope: [''] }), login)
 }
 
 function login(req, res) {
@@ -28,7 +52,7 @@ function login(req, res) {
 }
 
 function authenticate(req, res, next) {
-	if (req.path.startsWith('/public')) {
+	if (req.path.startsWith('/public') || req.path.startsWith('/i/')) {
 		next()
 		return
 	}

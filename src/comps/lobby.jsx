@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import { useStateLink } from '@hookstate/core'
 import { Label, Card, Header, Segment, Image } from 'semantic-ui-react'
 import Img from 'react-image'
@@ -70,7 +70,7 @@ export default function Lobby() {
 		}
 
 		return (
-			<Card>
+            <Card>
 				{streamer.stream && (
 					<Image wrapped ui={false} onClick={() => commands.joinGame(streamer.user)} style={{ cursor: 'pointer' }}>
 						<Img src={previewURL(streamer.user)} loader={<img src="/i/preview.jpg" />} />
@@ -80,10 +80,10 @@ export default function Lobby() {
 					<Image floated="right" size="mini" src={streamer.user.picture} circular />
 					<Card.Header>
 						{streamer.user.service == 'twitch' ? (
-							<React.Fragment>
+							<Fragment>
 								<span>{streamer.user.name}</span>
 								<img src="/i/link.png" style={{ paddingLeft: 10, paddingBottom: 3, cursor: 'pointer' }} onClick={() => openStream()} />
-							</React.Fragment>
+							</Fragment>
 						) : (
 							streamer.user.name
 						)}
@@ -95,10 +95,10 @@ export default function Lobby() {
 							{streamer.info.matureOnly && <span style={{ color: 'red' }}>&nbsp;(Mature)</span>}
 						</b>
 						{streamer.stream?.description && (
-							<React.Fragment>
+							<Fragment>
 								<br />
 								<span style={{ fontSize: '0.9em' }}>{streamer.stream.description}</span>
-							</React.Fragment>
+							</Fragment>
 						)}
 					</Card.Description>
 				</Card.Content>
@@ -126,11 +126,11 @@ export default function Lobby() {
 					</div>
 				</Card.Content>
 			</Card>
-		)
+        );
 	}
 
 	return (
-		<React.Fragment>
+        <Fragment>
 			<Header style={{ color: 'white', fontWeight: '700' }}>Available Games</Header>
 			<Segment basic>
 				<Card.Group itemsPerRow={rowCount} style={{ margin: '-2em', marginTop: '-1em' }}>
@@ -139,6 +139,6 @@ export default function Lobby() {
 					))}
 				</Card.Group>
 			</Segment>
-		</React.Fragment>
-	)
+		</Fragment>
+    );
 }

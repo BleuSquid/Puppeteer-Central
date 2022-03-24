@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { Card, Table } from 'semantic-ui-react'
 import { useStateLink } from '@hookstate/core'
 import { Spacer } from '../comps/tools'
@@ -28,7 +28,7 @@ export default function Settings04(props) {
 		status.assign(colonistID, null)
 	}
 
-	if (props.mode != 'streamer' || statusLinks.value.game.colonists.length == 0) return <React.Fragment></React.Fragment>
+	if (props.mode != 'streamer' || statusLinks.value.game.colonists.length == 0) return <Fragment></Fragment>;
 
 	return (
 		<Card fluid>

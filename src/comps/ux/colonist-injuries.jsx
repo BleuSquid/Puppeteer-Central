@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { useStateLink } from '@hookstate/core'
 import colonist from '../../services/cmd_colonist'
 import colors from '../../colors'
@@ -25,21 +25,21 @@ export default function ColonistInjuries() {
 				)
 			)
 		return (
-			<React.Fragment key={injury.name}>
+            <Fragment key={injury.name}>
 				<div style={{ color: fixColor(injury.rgb) }}>{injury.name}</div>
 				<div style={{ textAlign: 'right' }}>
 					{hediffs.map((hediff, idx) => (
-						<React.Fragment key={hediff.name}>
+						<Fragment key={hediff.name}>
 							<span style={{ color: fixColor(hediff.rgb) }}>
 								{hediff.name}
 								{hediff.count > 1 ? ` ${hediff.count}x` : ''}
 							</span>
 							{idx < hediffs.length - 1 ? ', ' : ''}
-						</React.Fragment>
+						</Fragment>
 					))}
 				</div>
-			</React.Fragment>
-		)
+			</Fragment>
+        );
 	}
 
 	return <div style={grid}>{colonistLink.value.injuries.map((injury) => doInjury(injury, injury.hediffs))}</div>

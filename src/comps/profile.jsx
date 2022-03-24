@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button, Card, Image } from 'semantic-ui-react'
 import { useStateLink } from '@hookstate/core'
 import status from '../services/cmd_status'

@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { useStateLink } from '@hookstate/core'
 import routesRef from '../hooks/routes'
 import Header from '../comps/header'
@@ -24,9 +24,9 @@ export default function App() {
 	}
 
 	return (
-		<React.Fragment>
+        <Fragment>
 			<Header />
 			<div id="game">{content()}</div>
-		</React.Fragment>
-	)
+		</Fragment>
+    );
 }

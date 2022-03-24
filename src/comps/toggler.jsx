@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { Image } from 'semantic-ui-react'
 
 export default function Toggler(props) {
@@ -14,9 +14,9 @@ export default function Toggler(props) {
 	}
 
 	return (
-		<React.Fragment>
+        <Fragment>
 			<Image src="/i/menu.gif" style={toggleStyle} onClick={toggle} />
 			{props.settings.value && props.children}
-		</React.Fragment>
-	)
+		</Fragment>
+    );
 }

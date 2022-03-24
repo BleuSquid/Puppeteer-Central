@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'
-import React, { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { Button, Card, Label, Segment, Header } from 'semantic-ui-react'
 import Toggler from '../comps/toggler'
 import { useStateLink } from '@hookstate/core'
@@ -51,7 +51,7 @@ export default function Settings01(props) {
 
 	const createTokenCard = () => {
 		return (
-			<React.Fragment>
+            <Fragment>
 				<Header size="tiny" style={note}>
 					For RimWorld Streamers
 				</Header>
@@ -81,14 +81,14 @@ export default function Settings01(props) {
 						</Segment>
 					)}
 				</Segment.Group>
-			</React.Fragment>
-		)
+			</Fragment>
+        );
 	}
 
 	const revokeCard = () => {
 		return (
-			<React.Fragment>
-				<React.Fragment>
+            <Fragment>
+				<Fragment>
 					<p>
 						A game token with id <b>{settingsLinks.nested.game.value}</b> is active. If you think your game token is somehow compromised or if you want to
 						create a new token, you must first revoke the current token:
@@ -96,12 +96,12 @@ export default function Settings01(props) {
 					<Button size="tiny" compact onClick={revokeToken}>
 						Revoke Game Token
 					</Button>
-				</React.Fragment>
-			</React.Fragment>
-		)
+				</Fragment>
+			</Fragment>
+        );
 	}
 
-	if (props.mode != 'streamer') return <React.Fragment></React.Fragment>
+	if (props.mode != 'streamer') return <Fragment></Fragment>;
 
 	return (
 		<Card fluid>

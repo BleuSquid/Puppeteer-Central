@@ -1,4 +1,4 @@
-import React, { createRef, useState } from 'react'
+import { Fragment, createRef, useState } from 'react'
 import { Popup } from 'semantic-ui-react'
 import { useStateLink } from '@hookstate/core'
 import Profile from '../comps/profile'
@@ -28,7 +28,7 @@ export default function AccountProxy() {
 	}
 
 	return (
-		<React.Fragment>
+        <Fragment>
 			<style>{`
 				#picture {
 					width: 18px;
@@ -74,6 +74,6 @@ export default function AccountProxy() {
 					<Profile />
 				</Popup.Content>
 			</Popup>
-		</React.Fragment>
-	)
+		</Fragment>
+    );
 }

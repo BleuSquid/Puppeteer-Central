@@ -82,7 +82,7 @@ async function helloViewer(n, user, ws) {
 	}
 	setTimeout(async () => {
 		ws.sendEncoded({ type: 'status', status })
-		const streamers = await peers.availableStreamers()
+		const streamers = await peers.availableStreamers(user)
 		ws.sendEncoded({ type: 'streamers', streamers })
 		ws.sendEncoded({ type: 'settings', settings })
 	}, 0)
