@@ -189,8 +189,6 @@ export default function ColonistSchedules() {
 				))}
 			</div>
 			<div style={grid2}>
-				<div></div>
-				<div></div>
 				{[...Array(24)].map((_, i) => (
 					<div style={header2} key={i}>
 						<span>{i}</span>
