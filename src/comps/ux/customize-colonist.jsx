@@ -63,12 +63,24 @@ export default function CustomizeColonist() {
 		</Fragment>
 	)
 
+	// 1.4 / Biotech: Do not allow children / adults to switch to each others' body type
+	const bodyTypeCurrent = gameLink.value.style.bodyType
+	const restrictedBodyTypes = ["Child", "Baby"]
+
+	let bodyTypesAvail = gameLink.value.bodyTypes
+	if (restrictedBodyTypes.indexOf(bodyTypeCurrent)>=0) {
+		bodyTypesAvail=bodyTypeCurrent
+	} else {
+		bodyTypesAvail=bodyTypesAvail.filter(item => !restrictedBodyTypes.includes(item))
+	}
+	const bodyTypeChoices=bodyTypesAvail
+
 	const bodyTypePart = (
 		<Fragment>
 			<div style={{ whiteSpace: 'nowrap', marginTop: 'auto', marginBottom: 'auto' }}>Body Style</div>
 			<Stepper
-				value={gameLink.value.style.bodyType}
-				choices={gameLink.value.bodyTypes}
+				value={bodyTypeCurrent}
+				choices={bodyTypeChoices}
 				onChange={(val) => {
 					gameLink.nested.style.nested.bodyType.set(val)
 					commands.customize('bodyType', val)
