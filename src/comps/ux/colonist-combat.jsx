@@ -46,7 +46,9 @@ export default function ColonistCombat() {
 	}, [])
 
 	let mapFrequency = gameLink.value.mapFreq
-	if (mapFrequency == 0) mapFrequency = 400
+
+	// Enforce minimum update Frequency = 1 second to conserve bandwidth
+	if (mapFrequency <= 1000) mapFrequency = 1000
 
 	const mapRef = createRef()
 	const [mapURL, setMapURL] = useState('')

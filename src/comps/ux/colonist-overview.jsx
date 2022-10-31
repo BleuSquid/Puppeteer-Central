@@ -82,7 +82,7 @@ export default function ColonistOverview() {
 		return choices
 	}
 
-	const mapSize = 128
+	const mapSize = 64
 	const frame = gridLink.nested.frame.value
 	useEffect(() => {
 		const updateCanvas = async () => {
